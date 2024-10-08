@@ -1,0 +1,7 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:layout="sap.ui.layout" 
+xmlns:smartField="sap.ui.comp.smartfield">
+<VBox>
+    <smartField:SmartLabel labelFor="idBusinessClassMaximumSeats" />
+    <smartField:SmartField id="idBusinessClassMaximumSeats" value="{BusinessClassMaximumSeats}" editable="{ui>editable}" />
+</VBox>
+</core:View>

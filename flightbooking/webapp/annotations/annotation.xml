@@ -1,0 +1,365 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI" />
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwbep/RMTSAMPLEFLIGHT_2/$metadata">
+        <edmx:Include Namespace="RMTSAMPLEFLIGHT_2" />
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <Annotations Target="RMTSAMPLEFLIGHT_2.Flight">
+                <!-- list report first page items-->
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="FlightConnectionID" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="AirCraftType" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="AirLineID" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="FlightDate" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="LocalCurrencyCode" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="TotalBookingsSum" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Airefare" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="FirstClassMaximumSeats" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="FirstClassOccupiedSeats" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="EconomyClassMaximumSeats" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="EconomyClassOccupiedSeats" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="BusinessClassMaximumSeats" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="BusinessClassOccupiedSeats" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <!-- list report page filter-->
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>AirLineID</PropertyPath>
+                        <PropertyPath>FlightConnectionID</PropertyPath>
+                        <PropertyPath>AirFare</PropertyPath>
+                        <PropertyPath>AirCraftType</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <!-- first object page facet-->
+
+                <Annotation Term="UI.DataPoint" Qualifier="Flight_dpq">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Title" String="Total Booking Sum" />
+                        <PropertyValue Property="Value" Path="TotalBookingsSum" />
+                        <PropertyValue Property="Criticality" Path="TotalBookingsSum" />
+                    </Record>
+                </Annotation>
+
+                <!-- Define the Field Group for Order Information -->
+                <Annotation Term="UI.DataPoint" Qualifier="BusinessClassMaximumSeats">
+                    <Record>
+                        <PropertyValue Property="Value" Path="BusinessClassMaximumSeats" />
+                        <PropertyValue Property="Title" String="Business Class Maximum Seats" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="BusinessClassOccupiedSeats">
+                    <Record>
+                        <PropertyValue Property="Value" Path="BusinessClassOccupiedSeats" />
+                        <PropertyValue Property="Title" String="Business Class Occupied Seats" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="FirstClassMaximumSeats">
+                    <Record>
+                        <PropertyValue Property="Value" Path="FirstClassMaximumSeats" />
+                        <PropertyValue Property="Title" String="First Class Maximum Seats" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="FirstClassOccupiedSeats">
+                    <Record>
+                        <PropertyValue Property="Value" Path="FirstClassOccupiedSeats" />
+                        <PropertyValue Property="Title" String="First Class Occupied Seats" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="EconomyClassMaximumSeats">
+                    <Record>
+                        <PropertyValue Property="Value" Path="EconomyClassMaximumSeats" />
+                        <PropertyValue Property="Title" String="Economy Class Maximum Seats" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="EconomyClassOccupiedSeats">
+                    <Record>
+                        <PropertyValue Property="Value" Path="EconomyClassOccupiedSeats" />
+                        <PropertyValue Property="Title" String="Economy Class Occupied Seats" />
+                    </Record>
+                </Annotation>
+                <!-- add UI.ReferenceFacet that connects to UI.DataPoint created in the last step-->
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Flight_dpq" />
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#BusinessClassMaximumSeats" />
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#BusinessClassOccupiedSeats" />
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#FirstClassMaximumSeats" />
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#FirstClassOccupiedSeats" />
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#EconomyClassMaximumSeats" />
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#EconomyClassOccupiedSeats" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+
+                <!-- first object page items-->
+
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Booking Information:" />
+                            <PropertyValue Property="ID" String="info1" />
+                            <PropertyValue Property="Target" AnnotationPath="FlightBookings/@UI.LineItem" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="Flight Information" />
+                        <PropertyValue Property="TypeNamePlural" String="Flight information1" />
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="FlightDate" />
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="AirCraftType" />
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                    
+                </Annotation>
+            </Annotations>
+
+            <Annotations Target="RMTSAMPLEFLIGHT_2.Booking">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="AirLineID" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="FlightDate" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="LocalCurrencyCode" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PassengerName" />
+                        </Record>
+
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CustomerType" />
+                        </Record>
+
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PriceInLocalCurrency" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="FlightClass" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="LuggageWeight" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Reserved" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Cancelled" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="SalesOfficeID" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Invoice" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="TravelAgencyID" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <!-- Second object page facet-->
+                <Annotation Term="UI.DataPoint" Qualifier="Flight">
+                    <Record>
+                        <PropertyValue Property="Value" Path="BookedFlight/AirCraftType" />
+                        <PropertyValue Property="Title" String="Type of plane" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="Flight_info">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Title" String="Booking ID" />
+                        <PropertyValue Property="Value" Path="BookedFlight/FlightBooking/BookingID" />
+                        <PropertyValue Property="Criticality" Path="BookedFlight/FlightBooking/BookingID" />
+                    </Record>
+                </Annotation>
+
+                <Annotation Term="UI.DataPoint" Qualifier="bookinginfo">
+                    <Record>
+                        <PropertyValue Property="Value" Path="CustomerID" />
+                        <PropertyValue Property="Title" String="Customer ID" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="Price">
+                    <Record>
+                        <PropertyValue Property="Value" Path="PriceInLocalCurrency" />
+                        <PropertyValue Property="Title" String="Price" />
+                    </Record>
+                </Annotation>
+                   <Annotation Term="UI.DataPoint" Qualifier="Class">
+                    <Record>
+                        <PropertyValue Property="Value" Path="FlightClass" />
+                        <PropertyValue Property="Title" String="Class" />
+                    </Record>
+                </Annotation>
+
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Flight_details" />
+                            <PropertyValue Property="Label" String="Flight details" />
+                            <PropertyValue Property="ID" String="Flight_Detail_ID" />
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Passenger Details" />
+                            <PropertyValue Property="ID" String="pd" />
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Passenger_details" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+
+                <!-- Second object page FieldGroup-->
+                <Annotation Term="UI.FieldGroup" Qualifier="Passenger_details">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="PassengerName" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="PassengerDateOfBirth" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="CustomerID" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="BookingID" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="CustomerType" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ForeignCurrencyCode" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="PriceInLocalCurrency" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="LuggageWeight" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="BookingDate" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+
+                <Annotation Term="UI.FieldGroup" Qualifier="Flight_details">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="BookedFlight/FlightDetails/FlightType" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="BookingID" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="FlightClass" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="BookedFlight/FlightDetails/DepartureCity" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="BookedFlight/FlightDetails/DepartureAirPort" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="BookedFlight/FlightDetails/DepartureTime" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="BookedFlight/FlightDetails/DestinationCity" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="BookedFlight/FlightDetails/DestinationAirPort" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="BookedFlight/FlightDetails/ArrivalInDays" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="BookedFlight/FlightDetails/FlightTime" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="BookedFlight/FlightDetails/Distance" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="BookedFlight/FlightDetails/DepartureCountryCode" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Cancelled" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Invoice" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Smoker" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="SalesOfficeID" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="WeightUnit" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="TravelAgencyID" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

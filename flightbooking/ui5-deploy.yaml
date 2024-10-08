@@ -1,0 +1,25 @@
+specVersion: "3.1"
+metadata:
+  name: convista.flightbooking
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: S12
+          verbose: true
+          url: http://virtuals12:8000
+        app:
+          name: ZUI5_TEST
+          description: An Fiori list report app
+          package: $TMP
+          transport: S12K902771
+        exclude:
+          - /test/
+

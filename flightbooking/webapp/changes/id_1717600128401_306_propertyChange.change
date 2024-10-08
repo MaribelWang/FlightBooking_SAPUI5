@@ -1,0 +1,41 @@
+{
+    "fileName": "id_1717600128401_306_propertyChange",
+    "fileType": "change",
+    "changeType": "propertyChange",
+    "moduleName": "",
+    "reference": "convista.flightbooking",
+    "packageName": "",
+    "content": {
+        "property": "showAnchorBar",
+        "newValue": true
+    },
+    "selector": {
+        "id": "convista.flightbooking::sap.suite.ui.generic.template.ObjectPage.view.Details::FlightCollection--objectPage",
+        "idIsLocal": false,
+        "type": "sap.uxap.ObjectPageLayout"
+    },
+    "layer": "CUSTOMER_BASE",
+    "texts": {},
+    "namespace": "apps/convista.flightbooking/changes/",
+    "projectId": "",
+    "creation": 1717600128401,
+    "originalLanguage": "",
+    "support": {
+        "generator": "changeUtils: SAPFioriTools",
+        "service": "",
+        "user": "",
+        "sapui5Version": "1.102.2",
+        "sourceChangeFileName": "",
+        "compositeCommand": ""
+    },
+    "oDataInformation": {},
+    "dependentSelector": {},
+    "validAppVersions": {
+        "from": "0.0.1",
+        "to": "0.0.1",
+        "creation": "0.0.1"
+    },
+    "jsOnly": false,
+    "variantReference": "",
+    "appDescriptorChange": false
+}
