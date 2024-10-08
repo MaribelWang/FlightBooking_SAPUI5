@@ -1,0 +1,124 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+   xmlns:smarttable="sap.ui.comp.smarttable"
+   xmlns="sap.uxap"
+  controllerName="convista.flightbookingui5.controller.BookingInformation"
+   xmlns:m="sap.m"
+   xmlns:core="sap.ui.core"
+   xmlns:forms="sap.ui.layout.form"
+   xmlns:layout="sap.ui.layout"
+   height="100%">
+
+   <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+      <headerTitle>
+         <ObjectPageDynamicHeaderTitle>
+            <expandedHeading>
+               <m:Title
+                  id="flightDateTitle"
+                  text="{
+                     path: 'FlightDate',
+                     type:'sap.ui.model.type.Date',
+                     formatOptions:{pattern:'MMM dd, yyyy, h:mm:ss a', UTC: true}
+                  }"
+                  wrapping="true"
+               />
+            </expandedHeading>
+            <snappedHeading>
+               <m:VBox>
+                  <m:Title text="Flight Number" />
+                  <m:Label text="{AirCraftType}" />
+               </m:VBox>
+            </snappedHeading>
+            <expandedContent>
+               <m:Label text="{AirCraftType}"/>
+            </expandedContent>
+            <snappedTitleOnMobile>
+               <m:Title text="Flight Number" />
+            </snappedTitleOnMobile>
+            <actions>
+               <m:Button text="Edit" type="Emphasized" />
+               <m:Button text="Delete" />
+               <m:Button icon="sap-icon://action" type="Transparent" />
+            </actions>
+         </ObjectPageDynamicHeaderTitle>
+      </headerTitle>
+      <headerContent>
+         <m:FlexBox wrap="Wrap" fitContainer="true">
+            <m:VBox class="sapUiLargeMarginEnd">
+               <m:Title text="Total Booking Sum" class="sapUiTinyMarginBottom" />
+               <m:ObjectNumber number="{TotalBookingsSum}" unit="USD" emphasized="false" class="sapMObjectNumberLarge" />
+            </m:VBox>
+            <m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+               <m:Title text="Business Class Maximum Seats" class="sapUiTinyMarginBottom" />
+               <m:ObjectNumber number="{BusinessClassMaximumSeats}" emphasized="false" class="sapMObjectNumberLarge" />
+            </m:VBox>
+            <m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+               <m:Title text="Business Class Occupied Seats" class="sapUiTinyMarginBottom" />
+               <m:ObjectNumber number="{BusinessClassOccupiedSeats}" emphasized="false" class="sapMObjectNumberLarge" />
+            </m:VBox>
+            <m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+               <m:Title text="First Class Maximum Seats" class="sapUiTinyMarginBottom" />
+               <m:ObjectNumber number="{FirstClassMaximumSeats}" emphasized="false" class="sapMObjectNumberLarge" />
+            </m:VBox>
+            <m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+               <m:Title text="First Class Occupied Seats" class="sapUiTinyMarginBottom" />
+               <m:ObjectNumber number="{FirstClassOccupiedSeats}" emphasized="false" class="sapMObjectNumberLarge" />
+            </m:VBox>
+            <m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+               <m:Title text="Economy Class Maximum Seats" class="sapUiTinyMarginBottom" />
+               <m:ObjectNumber number="{EconomyClassMaximumSeats}" emphasized="false" class="sapMObjectNumberLarge" />
+            </m:VBox>
+            <m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+               <m:Title text="Economy Class Occupied Seats" class="sapUiTinyMarginBottom" />
+               <m:ObjectNumber number="{EconomyClassOccupiedSeats}" emphasized="false" class="sapMObjectNumberLarge" />
+            </m:VBox>
+         </m:FlexBox>
+      </headerContent>
+      <sections>
+         <ObjectPageSection title="Bookings">
+            <ObjectPageSubSection>
+               <blocks>
+                  <smarttable:SmartTable
+                     id="smartTable"
+                     entitySet="BookingCollection"
+                     tableType="ResponsiveTable"
+                     enableExport="true"
+                     useVariantManagement="true"
+                     useTablePersonalisation="true"
+                     header="Bookings"
+                     enableAutoBinding="false"
+                     showRowCount="true"
+                     beforeRebindTable=".onBeforeRebindTable"
+                  >
+                     <m:Table>
+                        <m:columns>
+                           <m:Column>
+                              <m:Text text="Booking ID" />
+                           </m:Column>
+                           <m:Column>
+                              <m:Text text="Customer ID" />
+                           </m:Column>
+                           <m:Column>
+                              <m:Text text="Customer Name" />
+                           </m:Column>
+                           <m:Column>
+                              <m:Text text="Flight Date" />
+                           </m:Column>
+                        </m:columns>
+                        <m:items>
+                           <m:ColumnListItem press="onBookingRowPress">
+                              <m:cells>
+                                 <m:Text text="{BookingID}" />
+                                 <m:Text text="{CustomerID}" />
+                                 <m:Text text="{CustomerName}" />
+                                 <m:Text text="{path: 'FlightDate', type: 'sap.ui.model.type.DateTime', formatOptions: {pattern: 'MMM dd, yyyy, h:mm:ss a'}}" />
+                              </m:cells>
+                           </m:ColumnListItem>
+                        </m:items>
+                     </m:Table>
+                  </smarttable:SmartTable>
+               </blocks>
+            </ObjectPageSubSection>
+         </ObjectPageSection>
+      </sections>
+   </ObjectPageLayout>
+</mvc:View>

@@ -1,0 +1,28 @@
+<mvc:View controllerName="convista.flightbookingui5.controller.Overview"
+	    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	    xmlns:m="sap.m"
+		xmlns:smartTable="sap.ui.comp.smarttable"
+		xmlns:smartfilterbar="sap.ui.comp.smartfilterbar">	    
+		<m:Page id="page" title="{i18n>title}">
+	        <m:content>
+
+	        	<smartfilterbar:SmartFilterBar id="smartFilterBar" entitySet="FlightCollection" >
+					<smartfilterbar:controlConfiguration >
+						<smartfilterbar:ControlConfiguration key="AirLineID" label="AirLine" visibleInAdvancedArea="true"></smartfilterbar:ControlConfiguration>
+						<smartfilterbar:ControlConfiguration key="FlightConnectionID" label="Flight Number" visibleInAdvancedArea="true"></smartfilterbar:ControlConfiguration>
+						<smartfilterbar:ControlConfiguration key="AirFare" label="Airfare" visibleInAdvancedArea="true"></smartfilterbar:ControlConfiguration>
+						<smartfilterbar:ControlConfiguration key="AirCraftType" label="Type of the plane" visibleInAdvancedArea="true"></smartfilterbar:ControlConfiguration>
+					</smartfilterbar:controlConfiguration>
+				</smartfilterbar:SmartFilterBar>
+
+				<smartTable:SmartTable smartFilterId="smartFilterBar" header="Flights information" tableType="ResponsiveTable" editable="false"
+				entitySet="FlightCollection" showFullScreenButton="true" enableAutoBinding="true" enableAutoColumnWidth="true"
+        class="sapUiResponsiveContentPadding"
+		initiallyVisibleFields="FlightConnectionID,AirCraftType,AirLineID,FlightDate,LocalCurrencyCode,AirFare,TotalBookingsSum">
+					<m:Table id="idResponsiveTable" selectionChange="onRowPress" mode="SingleSelectMaster">
+						
+					</m:Table>
+				</smartTable:SmartTable>
+	        </m:content>
+	    </m:Page>
+	</mvc:View>
